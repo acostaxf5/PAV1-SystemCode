@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DatosEstadisticas" targetNamespace="http://tempuri.org/DatosEstadisticas.xsd" xmlns:mstns="http://tempuri.org/DatosEstadisticas.xsd" xmlns="http://tempuri.org/DatosEstadisticas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="PAV1ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PAV1ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SYSTEMCODE.Properties.Settings.GlobalReference.Default.PAV1ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BarriosVentasTableAdapter" GeneratorDataComponentClassName="BarriosVentasTableAdapter" Name="BarriosVentas" UserDataComponentName="BarriosVentasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PAV1ConnectionString (Settings)" DbObjectName="PAV1.dbo.Barrios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT b.nombre, COUNT(*) as cantidad_ventas
+FROM Barrios b, Facturas f, Clientes c
+GROUP BY b.nombre</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
+              <Mapping SourceColumn="cantidad_ventas" DataSetColumn="cantidad_ventas" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProyectosVentasTableAdapter" GeneratorDataComponentClassName="ProyectosVentasTableAdapter" Name="ProyectosVentas" UserDataComponentName="ProyectosVentasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PAV1ConnectionString (Settings)" DbObjectName="PAV1.dbo.Proyectos" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT TOP(15) p.descripcion, SUM(fd.cantidad_licencias) as cantidad_licencias
+FROM FacturasDetalle fd, Proyectos p
+GROUP BY p.descripcion</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
+              <Mapping SourceColumn="cantidad_licencias" DataSetColumn="cantidad_licencias" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DatosEstadisticas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DatosEstadisticas" msprop:Generator_UserDSName="DatosEstadisticas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BarriosVentas" msprop:Generator_TableClassName="BarriosVentasDataTable" msprop:Generator_TableVarName="tableBarriosVentas" msprop:Generator_TablePropName="BarriosVentas" msprop:Generator_RowDeletingName="BarriosVentasRowDeleting" msprop:Generator_RowChangingName="BarriosVentasRowChanging" msprop:Generator_RowEvHandlerName="BarriosVentasRowChangeEventHandler" msprop:Generator_RowDeletedName="BarriosVentasRowDeleted" msprop:Generator_UserTableName="BarriosVentas" msprop:Generator_RowChangedName="BarriosVentasRowChanged" msprop:Generator_RowEvArgName="BarriosVentasRowChangeEvent" msprop:Generator_RowClassName="BarriosVentasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cantidad_ventas" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncantidad_ventas" msprop:Generator_ColumnPropNameInRow="cantidad_ventas" msprop:Generator_ColumnPropNameInTable="cantidad_ventasColumn" msprop:Generator_UserColumnName="cantidad_ventas" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProyectosVentas" msprop:Generator_TableClassName="ProyectosVentasDataTable" msprop:Generator_TableVarName="tableProyectosVentas" msprop:Generator_TablePropName="ProyectosVentas" msprop:Generator_RowDeletingName="ProyectosVentasRowDeleting" msprop:Generator_RowChangingName="ProyectosVentasRowChanging" msprop:Generator_RowEvHandlerName="ProyectosVentasRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectosVentasRowDeleted" msprop:Generator_UserTableName="ProyectosVentas" msprop:Generator_RowChangedName="ProyectosVentasRowChanged" msprop:Generator_RowEvArgName="ProyectosVentasRowChangeEvent" msprop:Generator_RowClassName="ProyectosVentasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_UserColumnName="descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cantidad_licencias" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncantidad_licencias" msprop:Generator_ColumnPropNameInRow="cantidad_licencias" msprop:Generator_ColumnPropNameInTable="cantidad_licenciasColumn" msprop:Generator_UserColumnName="cantidad_licencias" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

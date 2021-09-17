@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DatosReportes" targetNamespace="http://tempuri.org/DatosReportes.xsd" xmlns:mstns="http://tempuri.org/DatosReportes.xsd" xmlns="http://tempuri.org/DatosReportes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="PAV1ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PAV1ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SYSTEMCODE.Properties.Settings.GlobalReference.Default.PAV1ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DetalleFacturaTableAdapter" GeneratorDataComponentClassName="DetalleFacturaTableAdapter" Name="DetalleFactura" UserDataComponentName="DetalleFacturaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PAV1ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+    fd.cantidad_licencias, 
+    p.descripcion , 
+    p.version, 
+    p.alcance, 
+    CAST((fd.precio/fd.cantidad_licencias) AS INT) as unitario, 
+    fd.precio
+FROM 
+    FacturasDetalle fd, 
+    Proyectos p</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="cantidad_licencias" DataSetColumn="cantidad_licencias" />
+              <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
+              <Mapping SourceColumn="version" DataSetColumn="version" />
+              <Mapping SourceColumn="alcance" DataSetColumn="alcance" />
+              <Mapping SourceColumn="unitario" DataSetColumn="unitario" />
+              <Mapping SourceColumn="precio" DataSetColumn="precio" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProyectosClientesTableAdapter" GeneratorDataComponentClassName="ProyectosClientesTableAdapter" Name="ProyectosClientes" UserDataComponentName="ProyectosClientesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PAV1ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT f.fecha, p.descripcion, p.version, p.alcance, fd.cantidad_licencias
+FROM Facturas f, FacturasDetalle fd, Proyectos p</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="fecha" DataSetColumn="fecha" />
+              <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
+              <Mapping SourceColumn="version" DataSetColumn="version" />
+              <Mapping SourceColumn="alcance" DataSetColumn="alcance" />
+              <Mapping SourceColumn="cantidad_licencias" DataSetColumn="cantidad_licencias" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DatosReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DatosReportes" msprop:Generator_UserDSName="DatosReportes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DetalleFactura" msprop:Generator_TableClassName="DetalleFacturaDataTable" msprop:Generator_TableVarName="tableDetalleFactura" msprop:Generator_RowChangedName="DetalleFacturaRowChanged" msprop:Generator_TablePropName="DetalleFactura" msprop:Generator_RowDeletingName="DetalleFacturaRowDeleting" msprop:Generator_RowChangingName="DetalleFacturaRowChanging" msprop:Generator_RowEvHandlerName="DetalleFacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="DetalleFacturaRowDeleted" msprop:Generator_RowClassName="DetalleFacturaRow" msprop:Generator_UserTableName="DetalleFactura" msprop:Generator_RowEvArgName="DetalleFacturaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cantidad_licencias" msprop:Generator_ColumnVarNameInTable="columncantidad_licencias" msprop:Generator_ColumnPropNameInRow="cantidad_licencias" msprop:Generator_ColumnPropNameInTable="cantidad_licenciasColumn" msprop:Generator_UserColumnName="cantidad_licencias" type="xs:int" minOccurs="0" />
+              <xs:element name="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_UserColumnName="descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="version" msprop:Generator_ColumnVarNameInTable="columnversion" msprop:Generator_ColumnPropNameInRow="version" msprop:Generator_ColumnPropNameInTable="versionColumn" msprop:Generator_UserColumnName="version" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="alcance" msprop:Generator_ColumnVarNameInTable="columnalcance" msprop:Generator_ColumnPropNameInRow="alcance" msprop:Generator_ColumnPropNameInTable="alcanceColumn" msprop:Generator_UserColumnName="alcance" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="unitario" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnunitario" msprop:Generator_ColumnPropNameInRow="unitario" msprop:Generator_ColumnPropNameInTable="unitarioColumn" msprop:Generator_UserColumnName="unitario" type="xs:int" minOccurs="0" />
+              <xs:element name="precio" msprop:Generator_ColumnVarNameInTable="columnprecio" msprop:Generator_ColumnPropNameInRow="precio" msprop:Generator_ColumnPropNameInTable="precioColumn" msprop:Generator_UserColumnName="precio" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProyectosClientes" msprop:Generator_TableClassName="ProyectosClientesDataTable" msprop:Generator_TableVarName="tableProyectosClientes" msprop:Generator_TablePropName="ProyectosClientes" msprop:Generator_RowDeletingName="ProyectosClientesRowDeleting" msprop:Generator_RowChangingName="ProyectosClientesRowChanging" msprop:Generator_RowEvHandlerName="ProyectosClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectosClientesRowDeleted" msprop:Generator_UserTableName="ProyectosClientes" msprop:Generator_RowChangedName="ProyectosClientesRowChanged" msprop:Generator_RowEvArgName="ProyectosClientesRowChangeEvent" msprop:Generator_RowClassName="ProyectosClientesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" />
+              <xs:element name="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_UserColumnName="descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="version" msprop:Generator_ColumnVarNameInTable="columnversion" msprop:Generator_ColumnPropNameInRow="version" msprop:Generator_ColumnPropNameInTable="versionColumn" msprop:Generator_UserColumnName="version" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="alcance" msprop:Generator_ColumnVarNameInTable="columnalcance" msprop:Generator_ColumnPropNameInRow="alcance" msprop:Generator_ColumnPropNameInTable="alcanceColumn" msprop:Generator_UserColumnName="alcance" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cantidad_licencias" msprop:Generator_ColumnVarNameInTable="columncantidad_licencias" msprop:Generator_ColumnPropNameInRow="cantidad_licencias" msprop:Generator_ColumnPropNameInTable="cantidad_licenciasColumn" msprop:Generator_UserColumnName="cantidad_licencias" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
